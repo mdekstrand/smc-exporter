@@ -22,7 +22,7 @@ impl SMCExportGauges {
                 "Current total system power draw"
             )?,
             system_energy: register_counter!(
-                "system_energy_joules",
+                "smc_system_energy_joules",
                 "Estimated system energy consumption"
             )?,
             dc_in_power: register_gauge!("smc_dc_in_power_watts", "Current DC input power")?,
