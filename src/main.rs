@@ -1,5 +1,7 @@
 mod gauges;
 
+use std::time::Duration;
+
 use anyhow::Result;
 use gauges::SMCExportGauges;
 use log::*;
@@ -13,9 +15,10 @@ fn main() -> Result<()> {
 
     let mut gauges = SMCExportGauges::create()?;
     let mut smc = Smc::connect()?;
+    let interval = Duration::from_millis(100);
 
     loop {
-        let _guard = exporter.wait_request();
+        let _guard = exporter.wait_duration(interval);
         info!("updating gauges");
         gauges.update(&mut smc)?;
     }
