@@ -1,7 +1,5 @@
 mod gauges;
 
-use std::sync::{Arc, Mutex};
-
 use anyhow::Result;
 use gauges::SMCExportGauges;
 use log::*;
